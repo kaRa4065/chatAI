@@ -1,15 +1,45 @@
-const ChatInput = () => {
-    return (
-      <div className="flex items-center p-4 bg-white rounded-xl shadow mt-10 w-full max-w-3xl mx-auto">
-        <input
-          type="text"
-          placeholder="Ask Najm Co-Pilot"
-          className="flex-1 px-4 py-2 outline-none text-gray-700"
-        />
-        <button className="text-gray-400 px-2">...</button>
-        <button className="text-blue-500 px-2">🎤</button>
-      </div>
-    );
+import { useState } from "react";
+import mic from "../assets/mic.svg";
+
+const ChatInput = ({ onSubmit }) => {
+  const [message, setMessage] = useState("");
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      if (message.trim()) {
+        onSubmit(message);
+        setMessage("");
+      }
+    }
   };
-  
-  export default ChatInput;
+
+  return (
+    <section className="mx-5 max-w-2xl sm:mx-auto ">
+      <div className="flex items-center justify-between p-4 bg-white rounded-xl shadow mt-10">
+        <div className="flex flex-col flex-grow">
+          <textarea
+            placeholder="Ask Najm Co-Pilot"
+            className="flex-1 outline-none text-[#667085] resize-none"
+            id="search"
+            rows={1}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
+            aria-label="Ask Najm Co-Pilot"
+          />
+        </div>
+        <div className="flex items-center ml-4">
+          <p className="px-2 cursor-pointer text-[#667085] mr-2 text-base">...</p>
+          <img
+            className="font-bold text-xl cursor-pointer"
+            src={mic}
+            alt="Microphone"
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ChatInput;

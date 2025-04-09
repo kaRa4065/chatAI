@@ -10,7 +10,7 @@ const ChatActions = () => {
         {buttons.map((btn, idx) => (
           <button
             key={idx}
-            className="border px-3 py-1 rounded-md text-sm bg-white hover:bg-gray-100"
+            className="border-[1px] border-[#EAECF0] px-3 py-1 rounded-md text-[10px] text-[#344054] font-semibold"
           >
             {btn}
           </button>
