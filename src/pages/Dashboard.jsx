@@ -34,7 +34,7 @@ const Dashboard = () => {
                 <img className="mb-5 w-[25px]" src={star} alt="Star Icon" />
               </div>
               <h2 className="text-[17.5px] mb-1 text-center font-semibold">
-                Hi, I’m Najm Co-Pilot
+                Hi
               </h2>
               <p className="text-sm text-[#667085] text-center mb-4">
                 How can I help you?
@@ -46,7 +46,7 @@ const Dashboard = () => {
             {messages.map((msg, i) => (
               <ChatBubble key={i} role={msg.role} text={msg.text} />
             ))}
-            {loading && <LoadingBubble/>}
+            {loading && <LoadingBubble />}
           </div>
           <div ref={endOfMessagesRef} />
         </section>
